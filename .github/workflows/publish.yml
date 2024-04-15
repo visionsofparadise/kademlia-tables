@@ -1,0 +1,23 @@
+name: NPM publish workflow
+
+on: [push]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  ref: ${{ github.event.release.target_commitish }}
+            - name: Setup Node
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 18
+                  registry-url: https://registry.npmjs.org/
+            - run: npm ci
+            - run: npm run check
+            - run: npm run test
+            - run: npm run build
+            - run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

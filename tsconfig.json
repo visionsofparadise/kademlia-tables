@@ -1,0 +1,39 @@
+{
+   "$schema": "https://json.schemastore.org/tsconfig",
+   "compilerOptions": {
+      "module": "esnext",
+      "target": "ES2020",
+      "importHelpers": true,
+      "noEmitHelpers": true,
+      "lib": ["ES2022"],
+      "jsx": "react",
+      "strict": true,
+      "composite": false,
+      "declaration": true,
+      "inlineSourceMap": true,
+      "isolatedModules": true,
+      "preserveWatchOutput": true,
+      "skipLibCheck": true,
+      "moduleResolution": "node",
+      "sourceMap": false,
+      "esModuleInterop": true,
+      "allowUmdGlobalAccess": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+      "noImplicitThis": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+      "resolveJsonModule": true,
+      "allowJs": true,
+      "outDir": "dist",
+      "paths": {
+         "*": ["./node_modules/*", "./src/d/*"]
+      }
+   },
+   "include": ["src/**/*.ts", "src/**/*.tsx"],
+   "exclude": ["dist/", "node_modules"],
+   "types": ["jest"],
+   "typeRoots": ["./src/type", "node_modules/@types"]
+}
