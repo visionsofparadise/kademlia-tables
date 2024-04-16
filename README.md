@@ -8,7 +8,9 @@ npm install kademlia-tables
 
 [kademlia-table](https://www.npmjs.com/package/kademlia-table) package is an extendable implementation of Kademlia and K-Buckets closely following details set out in the [Kademlia DHT paper](https://pdos.csail.mit.edu/~petar/papers/maymounkov-kademlia-lncs.pdf).
 
-The default implementation of Kademlia has drawbacks such as long node traversal time since round trip time and locality are not taken into account. When traversing nodes, the local node may contact nodes on the other side of the world just to find it needs to contact a node in the next building. The [Sloppy hashing and self-organizing clusters paper](http://iptps03.cs.berkeley.edu/final-papers/coral.pdf) suggests clustering as a remedy to this. Multiple tiers of Kademlia Table with nodes sorted by round trip time gives rise to node clustering around locality and connectivity. Nodes with lower table index and thus lower round trip response times are preffered when building routes, drastically reducing traversal time.
+The default implementation of Kademlia has drawbacks such as long node traversal time since round trip time and locality are not taken into account. When traversing nodes, the local node may contact nodes on the other side of the world just to find it needs to contact a node in the next building. 
+
+The [Sloppy hashing and self-organizing clusters paper](http://iptps03.cs.berkeley.edu/final-papers/coral.pdf) suggests clustering as a remedy to this. Multiple tiers of Kademlia Table with nodes sorted by round trip time gives rise to node clustering around locality and connectivity. Nodes with lower table index and thus lower round trip response times are preffered when building routes, drastically reducing traversal time.
 
 The `KademliaTables` class is extendable to prefer metrics other than round trip time to build clustering around that metric.
 
@@ -130,6 +132,14 @@ A fixed size array of all buckets in the tables.
 #### `tables.tables`
 
 A fixed size array of all tables.
+
+#### `number = KademliaTables.getDistance(idA, idB, encoding)`
+
+Gets the XOR distance between two id strings.
+
+#### `1 | -1 | 0 = compare(idA, idB) = KademliaTables.createCompare(targetId, encoding)`
+
+Creates a function for sorting ids based on distance from a target id going from closest to furthest
 
 ## License
 

@@ -10,7 +10,8 @@ export namespace KademliaTables {
 }
 
 export abstract class KademliaTables<N extends KademliaTable.Node = KademliaTable.Node> {
-	protected readonly idBytes: Buffer;
+	static getDistance = KademliaTable.getDistance;
+	static createCompare = KademliaTable.createCompare;
 
 	readonly bucketSize: number;
 	readonly bucketCount: number;
@@ -25,10 +26,8 @@ export abstract class KademliaTables<N extends KademliaTable.Node = KademliaTabl
 	constructor(readonly id: string, configuration: KademliaTables.Configuration = {}) {
 		this.encoding = configuration.encoding || "utf8";
 
-		this.idBytes = Buffer.from(id, this.encoding);
-
 		this.bucketSize = configuration.bucketSize || 20;
-		this.bucketCount = this.idBytes.length * 8;
+		this.bucketCount = Buffer.from(id, this.encoding).length * 8 + 1;
 
 		this.KademliaTable = configuration.KademliaTable || KademliaTable;
 		this.preferenceFactor = configuration.preferenceFactor || 2;

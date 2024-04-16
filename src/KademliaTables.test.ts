@@ -84,7 +84,7 @@ it("gets correct bucketIndex for id", () => {
 
 	const bucketIndex = customTables.tables[0].getBucketIndex(node.id);
 
-	expect(bucketIndex).toBe(7);
+	expect(bucketIndex).toBe(8);
 });
 
 it("gets 100 closest nodes out of 1000", () => {

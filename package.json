@@ -1,6 +1,6 @@
 {
   "name": "kademlia-tables",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An extension of the kademlia-table library for managing nodes between many kademlia tables.",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -14,7 +14,7 @@
     "build": "tsup src/index.ts --format esm,cjs --dts --treeshake"
   },
   "dependencies": {
-    "kademlia-table": "^1.0.4"
+    "kademlia-table": "^1.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.2",
